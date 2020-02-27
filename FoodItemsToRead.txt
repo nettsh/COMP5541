@@ -1,0 +1,3 @@
+Id|DiningType|Time|Name|Serving|Type|Retailer|Meal|Group
+001|InDining|2020-01-01 1:00AM|Cake|200g|Carb| | |
+002|OutDining|2020-02-01 2:00PM| | | |A&W|Frites|Main Dish
