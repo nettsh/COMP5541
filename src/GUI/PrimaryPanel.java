@@ -76,31 +76,3 @@ class FoodTableModel extends DefaultTableModel {
   return column == 3 ? Boolean.class : String.class;
  }
 }
-
-class FoodContextMenu extends JPopupMenu {
-
- public FoodContextMenu() {
-
-  JMenuItem menuItemModify = new JMenuItem("Modify");
-  JMenuItem menuItemRemove = new JMenuItem("Remove");
-
-  menuItemModify.addActionListener(new ActionListener() {
-
-   public void actionPerformed(ActionEvent e) {
-    JFrame frame = new JFrame("Item Modification");
-    String[] metadata = new String[]{"OutDining","Is","Cool"};
-    frame.add(new FoodSpecificationsPanel(metadata));
-
-    frame.pack();
-    frame.setLocationRelativeTo(null);
-    frame.setVisible(true);
-   }
-
-  });
-
-
-  add(menuItemModify);
-  add(menuItemRemove);
- }
-
-}
