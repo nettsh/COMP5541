@@ -1,0 +1,64 @@
+import javax.swing.*;
+
+
+import java.awt.*; // BorderLayout
+import java.awt.event.*; // ActionListener
+
+public class PrimaryPanel extends JPanel {
+
+ Object[] columnNames = new Object[] {
+  "Name",
+  "Food group",
+  "Time",
+  "Eaten"
+ };
+
+ Object[][] rowData = new Object[][] {
+  {
+   "Apple",
+   "Fruits1",
+   "12PM",
+   false
+  }, {
+   "Apple",
+   "Fruits2",
+   "11PM",
+   false
+  }
+ };
+
+ public PrimaryPanel() {
+
+  // create food list (table)
+  JTable itemTable = new JTable(new FoodTableModel(rowData, columnNames));
+
+  //configure table
+  itemTable.setComponentPopupMenu(new FoodContextMenu());
+  itemTable.setAutoCreateRowSorter(true); //a generic sorter
+  itemTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+  JScrollPane scroller = new JScrollPane(itemTable);
+
+  // create food button
+  JButton add = new JButton("Add");
+
+  add.addActionListener(new ActionListener() {
+
+   public void actionPerformed(ActionEvent e) {
+    JFrame frame = new JFrame("Diet Type");
+    frame.add(new DietType(frame));
+    frame.pack();
+    frame.setVisible(true);
+    frame.setLocationRelativeTo(null);
+   }
+
+  });
+
+  // configure panel
+  setLayout(new BorderLayout());
+
+  add(scroller, BorderLayout.CENTER);
+  add(add, BorderLayout.SOUTH);
+
+ }
+
+}
