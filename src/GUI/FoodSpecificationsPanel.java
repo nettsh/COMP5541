@@ -1,8 +1,9 @@
-import javax.swing.*;
-import java.awt.*;
-import javax.swing.table.*;
+import javax.swing.*; // Basic Swing stuff
+import java.awt.*; // Layouts
 
-import java.util.Date;
+import javax.swing.table.*; 
+
+import java.util.Date; // feature in TimeSpinner
 
 public class FoodSpecificationsPanel extends JPanel {
 
