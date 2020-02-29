@@ -133,18 +133,31 @@ public class PrimaryPanel extends JPanel {
 
 class FoodTableModel extends DefaultTableModel {
 
+    int headerLength ;
+
     FoodTableModel(Object[] columnNames, Object[][] data) {
-  super(data, columnNames);
+
+	
+        super(data, columnNames);
+
+	this.addColumn("Eaten");
  }
 
  FoodTableModel(Object[] columnNames) {
      super(columnNames, 0);
+     
+     this.addColumn("Eaten");
+
+     headerLength = this.getColumnCount();
+
+     System.out.println(headerLength);
+
  }
 
-    /*
+    
  @Override
  public Class getColumnClass(int column) {
-     return column == 3 ? Boolean.class : String.class;
+     return column == headerLength-1 ? Boolean.class : String.class;
  }
-    */
+
 }

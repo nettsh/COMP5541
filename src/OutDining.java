@@ -40,9 +40,10 @@ public class OutDining extends FoodItem {
         return group;
     }
 
+    @Override
     public Map<String,String> getAll() {
 
-	Map<String, String> all = this.getCommon();
+	Map<String, String> all = super.getAll();
 
 	all.put("Retailer", this.retailer);
 	all.put("Meal", this.meal);

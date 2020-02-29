@@ -41,9 +41,10 @@ public class InDining extends FoodItem {
         return type;
     }
 
+    @Override
     public Map<String,String> getAll() {
 
-	Map<String, String> all = this.getCommon();
+	Map<String, String> all = super.getAll();
 
 	all.put("Name", this.name);
 	all.put("Serving", this.serving);

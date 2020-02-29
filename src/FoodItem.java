@@ -32,7 +32,7 @@ public abstract class FoodItem {
         this.diningType = diningType;
     }
 
-    public  Map<String,String>  getCommon() {
+    public Map<String,String> getAll() {
 	
 	Map<String,String> common = new HashMap<>();
 
@@ -43,7 +43,5 @@ public abstract class FoodItem {
 	return common;
     }
 
-    public abstract Map<String,String> getAll();
-    
     public abstract String toTxtFile();
 }
