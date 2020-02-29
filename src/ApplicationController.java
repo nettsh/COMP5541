@@ -9,6 +9,7 @@ public class ApplicationController {
     public ApplicationController() {
         this.inDiningCount = 0;
         this.outDiningCount = 0;
+        items = new ArrayList<FoodItem>();
     }
     
     public ArrayList<FoodItem> retrieveExistingFoodItems(String fileName) {
@@ -50,13 +51,35 @@ public class ApplicationController {
         outDiningCount ++;
     }
 
-    public void modify(InDining inDiningItem) {
+    public void remove(InDining inDiningItem) {
         items.remove(inDiningItem);
         inDiningCount --;
     }
 
-    public void modify(OutDining outDiningItem) {
+    public void remove(OutDining outDiningItem) {
         items.remove(outDiningItem);
         outDiningCount --;
+    }
+
+    public void modify(InDining inDiningItemToModify) {
+        for (FoodItem item: items) {
+            if (item.getId() == inDiningItemToModify.getId()) {
+                ((InDining)item).setTime(inDiningItemToModify.getTime());
+                ((InDining)item).setServing(inDiningItemToModify.getServing());
+                ((InDining)item).setName(inDiningItemToModify.getName());
+                ((InDining)item).setType(inDiningItemToModify.getType());
+            }
+        }
+    }
+
+    public void modify(OutDining onDiningItemToModify) {
+        for (FoodItem item: items) {
+            if (item.getId() == onDiningItemToModify.getId()) {
+                ((OutDining)item).setTime(onDiningItemToModify.getTime());
+                ((OutDining)item).setRetailer(onDiningItemToModify.getRetailer());
+                ((OutDining)item).setMeal(onDiningItemToModify.getMeal());
+                ((OutDining)item).setGroup(onDiningItemToModify.getGroup());
+            }
+        }
     }
 }
