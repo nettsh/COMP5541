@@ -27,5 +27,7 @@ public abstract class FoodItem {
         this.diningType = diningType;
     }
 
+    public abstract Boolean getExistence(String attribute);
+    
     public abstract String toTxtFile();
 }

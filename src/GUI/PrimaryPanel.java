@@ -5,6 +5,8 @@ import java.awt.event.*; // ActionListener
 
 import javax.swing.table.*; // DefaultTableModel
 
+import java.util.ArrayList; // arraylist
+import java.util.Arrays; // debugging
 
 public class PrimaryPanel extends JPanel {
 
@@ -63,6 +65,44 @@ public class PrimaryPanel extends JPanel {
 
  }
 
+  public PrimaryPanel(String[] header, ArrayList<FoodItem> foodItems ) {
+
+    JTable itemTable = new JTable(new FoodTableModel(header));
+
+    for( FoodItem foodItem : foodItems) {
+
+	for ( String element : header ) {
+
+		}
+	    
+	    /*
+	    if ( foodItem.class.getField(element) ) {
+
+		System.out.println( foodItem.getId() + " has property " + element );
+		
+		}
+	    */
+	}
+	//System.out.println(foodItem);
+    }
+    
+    //configure table
+    itemTable.setComponentPopupMenu(new FoodContextMenu());
+    itemTable.setAutoCreateRowSorter(true); //a generic sorter
+    itemTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    JScrollPane scroller = new JScrollPane(itemTable);
+
+    // create food button
+    JButton add = new JButton("Add");
+  
+    // configure panel
+    setLayout(new BorderLayout());
+
+    add(scroller, BorderLayout.CENTER);
+    add(add, BorderLayout.SOUTH);
+  
+  }
+
 }
 
 class FoodTableModel extends DefaultTableModel {
@@ -71,6 +111,10 @@ class FoodTableModel extends DefaultTableModel {
   super(data, columnNames);
  }
 
+ FoodTableModel(Object[] columnNames) {
+     super(columnNames, 0);
+ }
+    
  @Override
  public Class getColumnClass(int column) {
   return column == 3 ? Boolean.class : String.class;
