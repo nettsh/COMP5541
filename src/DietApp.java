@@ -9,7 +9,9 @@ public class DietApp {
 //        itemsToSave.add(inDiningItem);
 //        itemsToSave.add(outDiningItem);
         ApplicationController appController = new ApplicationController();
-        appController.retrieveExistingFoodItems("FoodItemsToRead.txt");
-        appController.saveFoodItems("FoodItemsSaved.txt");
+        appController.retrieveExistingFoodItems("../FoodItemsToRead.txt");
+        appController.saveFoodItems("../FoodItemsSaved.txt");
+
+	System.out.println(appController.items.get(0));
     }
 }

@@ -5,6 +5,29 @@ import java.util.ArrayList;
 
 public class DataReader {
 
+    public static String[] getColumnNames(String fileName) {
+
+	String[] columns = {};
+	
+	try {
+	  
+	    FileInputStream inputStream = new FileInputStream(fileName);
+	    InputStreamReader inputReader = new InputStreamReader(inputStream, "UTF-8");
+            BufferedReader br = new BufferedReader(inputReader);
+            String line = br.readLine();
+
+	    columns = line.split("\\|");
+	
+	    return columns;
+	
+		} catch ( Exception e) {
+	    e.printStackTrace();
+	}
+
+	return columns;
+    }
+
+    
     public static ArrayList<FoodItem> getFoodItemsFromFile(String fileName) {
         ArrayList<FoodItem> items = new ArrayList<FoodItem>();
         try {
@@ -12,7 +35,7 @@ public class DataReader {
             InputStreamReader inputReader = new InputStreamReader(inputStream, "UTF-8");
             BufferedReader br = new BufferedReader(inputReader);
             String line = br.readLine();
-            while (line != null) {
+             while (line != null) {
                 line = br.readLine();
                 if (line == null) {
                     break;

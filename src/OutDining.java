@@ -38,6 +38,12 @@ public class OutDining extends FoodItem {
     }
 
     @Override
+    public Boolean getExistence(String attribute) {
+
+	return false;
+    }
+    
+    @Override
     public String toString() {
         return "OutDining{" +
                 "retailer='" + retailer + '\'' +

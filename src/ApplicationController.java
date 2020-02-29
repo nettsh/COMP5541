@@ -3,15 +3,19 @@ import java.util.ArrayList;
 public class ApplicationController {
     int inDiningCount;
     int outDiningCount;
-    ArrayList<FoodItem> items;
-
+    public ArrayList<FoodItem> items;
+    public String[] itemsHeader;
+    
     public ApplicationController() {
         this.inDiningCount = 0;
         this.outDiningCount = 0;
     }
-
+    
     public ArrayList<FoodItem> retrieveExistingFoodItems(String fileName) {
         items = DataReader.getFoodItemsFromFile(fileName);
+	
+	itemsHeader = DataReader.getColumnNames(fileName);
+	
         for (FoodItem item : items){
             if(item.getDiningType() == "InDining")
                 inDiningCount ++;
