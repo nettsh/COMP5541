@@ -14,6 +14,7 @@ public class UI {
 
   //System.out.println(Arrays.toString(appController.itemsHeader));
   frame.add(new PrimaryPanel(appController.itemsHeader, appController.items));
+  //  frame.add(new PrimaryPanel());
 
   frame.pack();
   frame.setLocationRelativeTo(null); // *** this will center your app ***

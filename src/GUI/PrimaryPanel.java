@@ -8,6 +8,9 @@ import javax.swing.table.*; // DefaultTableModel
 import java.util.ArrayList; // arraylist
 import java.util.Arrays; // debugging
 
+import java.util.Map;
+import java.util.Vector;
+
 public class PrimaryPanel extends JPanel {
 
  Object[] columnNames = new Object[] {
@@ -34,7 +37,7 @@ public class PrimaryPanel extends JPanel {
  public PrimaryPanel() {
 
   // create food list (table)
-  JTable itemTable = new JTable(new FoodTableModel(rowData, columnNames));
+     JTable itemTable = new JTable(new FoodTableModel(columnNames, rowData));
 
   //configure table
   itemTable.setComponentPopupMenu(new FoodContextMenu());
@@ -67,24 +70,35 @@ public class PrimaryPanel extends JPanel {
 
   public PrimaryPanel(String[] header, ArrayList<FoodItem> foodItems ) {
 
-    JTable itemTable = new JTable(new FoodTableModel(header));
+    FoodTableModel model = new FoodTableModel(header);
+	
+    JTable itemTable = new JTable(model);
 
     for( FoodItem foodItem : foodItems) {
 
+	Vector<String> row = new Vector<>();
+	
 	for ( String element : header ) {
 
-		}
+	    String tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
+		
+	    row.add(tmp);
 	    
-	    /*
+	    //	    System.out.println("iterating through " +
+
+	 }
+
+	model.addRow(row);
+
+	/*
 	    if ( foodItem.class.getField(element) ) {
 
 		System.out.println( foodItem.getId() + " has property " + element );
 		
 		}
 	    */
-	}
-	//System.out.println(foodItem);
     }
+	//System.out.println(foodItem);
     
     //configure table
     itemTable.setComponentPopupMenu(new FoodContextMenu());
@@ -94,7 +108,19 @@ public class PrimaryPanel extends JPanel {
 
     // create food button
     JButton add = new JButton("Add");
-  
+
+    
+  add.addActionListener(new ActionListener() {
+
+   public void actionPerformed(ActionEvent e) {
+    JFrame frame = new JFrame("Diet Type");
+    frame.add(new DietTypePanel(frame));
+    frame.pack();
+    frame.setVisible(true);
+    frame.setLocationRelativeTo(null);
+   }
+      });
+	  
     // configure panel
     setLayout(new BorderLayout());
 
@@ -107,16 +133,18 @@ public class PrimaryPanel extends JPanel {
 
 class FoodTableModel extends DefaultTableModel {
 
- FoodTableModel(Object[][] data, Object[] columnNames) {
+    FoodTableModel(Object[] columnNames, Object[][] data) {
   super(data, columnNames);
  }
 
  FoodTableModel(Object[] columnNames) {
      super(columnNames, 0);
  }
-    
+
+    /*
  @Override
  public Class getColumnClass(int column) {
-  return column == 3 ? Boolean.class : String.class;
+     return column == 3 ? Boolean.class : String.class;
  }
+    */
 }

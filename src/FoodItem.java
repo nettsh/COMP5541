@@ -1,8 +1,13 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class FoodItem {
     String time;
     String id;
     String diningType;
-
+    
+    String[] all;
+    
     public void setTime(String time) {
         this.time = time;
     }
@@ -27,7 +32,18 @@ public abstract class FoodItem {
         this.diningType = diningType;
     }
 
-    public abstract Boolean getExistence(String attribute);
+    public  Map<String,String>  getCommon() {
+	
+	Map<String,String> common = new HashMap<>();
+
+	common.put("Time", time);
+	common.put("Id", id);
+	common.put("DiningType", diningType);
+
+	return common;
+    }
+
+    public abstract Map<String,String> getAll();
     
     public abstract String toTxtFile();
 }

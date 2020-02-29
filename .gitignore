@@ -24,3 +24,6 @@ hs_err_pid*
 
 # MacOS
 .DS_Store
+
+# school examples
+lab1_Java_UI/

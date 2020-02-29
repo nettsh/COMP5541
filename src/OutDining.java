@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class OutDining extends FoodItem {
     String retailer;
     String meal;
@@ -37,12 +40,17 @@ public class OutDining extends FoodItem {
         return group;
     }
 
-    @Override
-    public Boolean getExistence(String attribute) {
+    public Map<String,String> getAll() {
 
-	return false;
+	Map<String, String> all = this.getCommon();
+
+	all.put("Retailer", this.retailer);
+	all.put("Meal", this.meal);
+	all.put("Group", this.group);
+		
+	return all;
     }
-    
+
     @Override
     public String toString() {
         return "OutDining{" +
