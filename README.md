@@ -6,7 +6,7 @@ to compile, please `cd` to directory `GUI` and run the command `javac -cp ../:. 
 
 # executing
 
-to run the GUI, please `cd to directory `GUI` and run the command `java -cp ../:. UI.java`.
+to run the GUI, please `cd` to directory `GUI` and run the command `java -cp ../:. UI.java`.
 
 # left to do
 
