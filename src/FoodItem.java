@@ -5,6 +5,7 @@ public abstract class FoodItem {
     String time;
     String id;
     String diningType;
+    Boolean eaten;
     
     String[] all;
     
@@ -30,6 +31,14 @@ public abstract class FoodItem {
 
     public void setDiningType(String diningType) {
         this.diningType = diningType;
+    }
+
+    public void setEaten(Boolean eaten) {
+        this.eaten = eaten;
+    }
+
+    public Boolean getEaten() {
+        return eaten;
     }
 
     public Map<String,String> getAll() {

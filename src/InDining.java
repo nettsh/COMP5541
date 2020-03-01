@@ -8,10 +8,11 @@ public class InDining extends FoodItem {
 
     public InDining(){}
 
-    public InDining(String id, String time, String name, String serving, String type) {
+    public InDining(String id, String time, Boolean eaten, String name, String serving, String type) {
         this.id = id;
         this.time = time;
         this.diningType = "Indining";
+        this.eaten = eaten;
         this.name = name;
         this.serving = serving;
         this.type = type;
@@ -67,6 +68,6 @@ public class InDining extends FoodItem {
 
     @Override
     public String toTxtFile() {
-        return id + "|" + "InDining" + "|" + time + "|" + name + "|" + serving + "|" + type + "| | | ";
+        return id + "|" + "InDining" + "|" + time + "|" + eaten + "|" + name + "|" + serving + "|" + type + "| | | ";
     }
 }

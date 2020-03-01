@@ -8,9 +8,10 @@ public class OutDining extends FoodItem {
 
     public OutDining(){}
 
-    public OutDining(String id, String time, String retailer, String meal, String group) {
+    public OutDining(String id, String time, Boolean eaten, String retailer, String meal, String group) {
         this.id = id;
         this.time = time;
+        this.eaten = eaten;
         this.retailer = retailer;
         this.meal = meal;
         this.group = group;
@@ -67,6 +68,6 @@ public class OutDining extends FoodItem {
     @Override
     public String toTxtFile() {
         //2|OutDining|JAN 31| | | |AW|Frites|Fat
-        return id + "|" + "OutDining" + "|" + time + "| | | |" + retailer + "|" + meal + "|" + group;
+        return id + "|" + "OutDining" + "|" + time + "|" + eaten + "| | | |" + retailer + "|" + meal + "|" + group;
     }
 }
