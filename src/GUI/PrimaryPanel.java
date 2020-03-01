@@ -19,9 +19,9 @@ public class PrimaryPanel extends JPanel {
     String[] header = ctl.itemsHeader;
     ArrayList<FoodItem> foodItems = ctl.items;
       
-    FoodTableModel model = new FoodTableModel(header);
+    FoodTableModel itemTableModel = new FoodTableModel(header);
 	
-    JTable itemTable = new JTable(model);
+    JTable itemTable = new JTable(itemTableModel);
 
     for( FoodItem foodItem : foodItems) {
 
@@ -38,14 +38,14 @@ public class PrimaryPanel extends JPanel {
 
 	    row.add(tmp);
 
-	 }
+	}
 
-	model.addRow(row.toArray());
+	itemTableModel.addRow(row.toArray());
 
     }
   
     //configure table
-    itemTable.setComponentPopupMenu(new FoodContextMenu(model, itemTable, ctl));
+    itemTable.setComponentPopupMenu(new FoodContextMenu(itemTableModel, itemTable, ctl));
     itemTable.setAutoCreateRowSorter(true); //a generic sorter
     itemTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     JScrollPane scroller = new JScrollPane(itemTable);
@@ -58,7 +58,7 @@ public class PrimaryPanel extends JPanel {
 
    public void actionPerformed(ActionEvent e) {
     JFrame frame = new JFrame("Diet Type");
-    frame.add(new DietTypePanel(frame));
+    frame.add(new DietTypePanel(frame, header, itemTableModel));
     frame.pack();
     frame.setVisible(true);
     frame.setLocationRelativeTo(null);

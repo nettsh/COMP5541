@@ -9,13 +9,16 @@ import java.util.Date; // feature in TimeSpinner
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+
 import java.util.UUID;
 
 import java.util.Arrays; // debugging
 
 public class FoodSpecificationsPanel extends JPanel {
     
-    public FoodSpecificationsPanel(JFrame parentFrame, String[] metadata) {
+    public FoodSpecificationsPanel(JFrame parentFrame, String[] metadata, String[] header, FoodTableModel itemTableModel) {
 	
 	setBackground(Color.green);
 	setLayout(new BorderLayout());
@@ -34,8 +37,6 @@ public class FoodSpecificationsPanel extends JPanel {
 	c.gridx = 0;
 	c.gridy = 0;
 	foodMetadataPanel.add(timeSpinner, c);
-
-	String[] header = DataReader.getColumnNames("../../FoodItemsToRead.txt");
 
 	Map<String,JTextField> textFields = new HashMap<>();
 
@@ -57,8 +58,6 @@ public class FoodSpecificationsPanel extends JPanel {
 	}
 
 	add(foodMetadataPanel, BorderLayout.WEST);
-
-
 
 	// nutrition fact
 	Object[] columnNames = new Object[] {
@@ -111,21 +110,53 @@ public class FoodSpecificationsPanel extends JPanel {
 
 		    // create object now
 
+		    List<Object> row = new ArrayList <Object>();
+				    
+				    
 		    if ( parentFrame.getTitle().equals("Out Dining") ) {
 
-		   	InDining item = new InDining ( metadata );
+		   	OutDining foodItem = new OutDining ( metadata );
+
+			System.out.println(foodItem.getAll());
+			
+			for ( String element : header ) {
+
+			    Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
+
+			    row.add(tmp);
+		    
+			}
+
+			itemTableModel.addRow(row.toArray());
+
+		    
 		    }
 		    else if ( parentFrame.getTitle().equals("In Dining") ) {
 			
-			OutDining item = new OutDining ( metadata );
-		    }
+			InDining foodItem = new InDining ( metadata );
+
+			for ( String element : header ) {
+
+			    Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
+
+			    row.add(tmp);
 		    
+			}
+
+			itemTableModel.addRow(row.toArray());
+		    }
+
+		    
+
+
 		}
+
 
 	    });
 
-	add(confirm, BorderLayout.SOUTH);
+	    add(confirm, BorderLayout.SOUTH);
+
+
+	    }
 
     }
-
-}

@@ -9,30 +9,6 @@ public class FoodContextMenu extends JPopupMenu {
   private JMenuItem menuItemModify;
   private JMenuItem menuItemRemove;
 
- public FoodContextMenu() {
-
-  JMenuItem menuItemModify = new JMenuItem("Modify");
-  JMenuItem menuItemRemove = new JMenuItem("Remove");
-
-  menuItemModify.addActionListener(new ActionListener() {
-
-   public void actionPerformed(ActionEvent e) {
-    JFrame frame = new JFrame("Item Modification");
-    String[] metadata = new String[]{"OutDining","Is","Cool"};
-    frame.add(new FoodSpecificationsPanel(frame, metadata));
-
-    frame.pack();
-    frame.setLocationRelativeTo(null);
-    frame.setVisible(true);
-   }
-
-  });
-
-
-  add(menuItemModify);
-  add(menuItemRemove);
- }
-
  public FoodContextMenu(FoodTableModel itemTableModel, JTable itemTable, ApplicationController ctl) {
         this.itemTableModel = itemTableModel;
         this.itemTable = itemTable;
@@ -45,7 +21,7 @@ public class FoodContextMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Item Modification");
                 String[] metadata = new String[]{"OutDining","Is","Cool"};
-                frame.add(new FoodSpecificationsPanel(frame, metadata));
+                frame.add(new FoodSpecificationsPanel(frame, metadata, ctl.itemsHeader, itemTableModel));
 
                 frame.pack();
                 frame.setLocationRelativeTo(null);
