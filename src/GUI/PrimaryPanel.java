@@ -14,7 +14,10 @@ import java.util.List;
 
 public class PrimaryPanel extends JPanel {
 
-  public PrimaryPanel(String[] header, ArrayList<FoodItem> foodItems ) {
+  public PrimaryPanel(ApplicationController ctl) {
+
+    String[] header = ctl.itemsHeader;
+    ArrayList<FoodItem> foodItems = ctl.items;
       
     FoodTableModel model = new FoodTableModel(header);
 	
@@ -42,7 +45,7 @@ public class PrimaryPanel extends JPanel {
     }
   
     //configure table
-    itemTable.setComponentPopupMenu(new FoodContextMenu());
+    itemTable.setComponentPopupMenu(new FoodContextMenu(model, itemTable, ctl));
     itemTable.setAutoCreateRowSorter(true); //a generic sorter
     itemTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     JScrollPane scroller = new JScrollPane(itemTable);
@@ -69,32 +72,5 @@ public class PrimaryPanel extends JPanel {
     add(add, BorderLayout.SOUTH);
   
   }
-
-}
-
-class FoodTableModel extends DefaultTableModel {
-
-    int headerLength ;
-
-    FoodTableModel(Object[] columnNames, Object[][] data) {
-
-	
-        super(data, columnNames);
-
-	this.addColumn("Eaten");
- }
-
- FoodTableModel(Object[] columnNames) {
-     super(columnNames, 0);
-     
-     headerLength = this.getColumnCount();
-
- }
-
-    
- @Override
- public Class getColumnClass(int column) {
-     return column == 3 ? Boolean.class : String.class;
- }
 
 }

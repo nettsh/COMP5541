@@ -14,9 +14,9 @@ public class ApplicationController {
     
     public ArrayList<FoodItem> retrieveExistingFoodItems(String fileName) {
         items = DataReader.getFoodItemsFromFile(fileName);
-	
-	itemsHeader = DataReader.getColumnNames(fileName);
-	
+    
+    itemsHeader = DataReader.getColumnNames(fileName);
+    
         for (FoodItem item : items){
             if(item.getDiningType() == "InDining")
                 inDiningCount ++;
@@ -49,6 +49,13 @@ public class ApplicationController {
     public void add(OutDining outDiningItem) {
         items.add(outDiningItem);
         outDiningCount ++;
+    }
+
+    public void removeById(String id) {
+        for (int i =0; i<items.size(); i++) {
+            if (items.get(i).getId() == id)
+                items.remove(i);
+        }
     }
 
     public void remove(InDining inDiningItem) {
