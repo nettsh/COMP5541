@@ -42,9 +42,9 @@ public class OutDining extends FoodItem {
     }
 
     @Override
-    public Map<String,String> getAll() {
+    public Map<String,Object> getAll() {
 
-	Map<String, String> all = super.getAll();
+	Map<String, Object> all = super.getAll();
 
 	all.put("Retailer", this.retailer);
 	all.put("Meal", this.meal);

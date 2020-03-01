@@ -10,6 +10,7 @@ import java.util.Arrays; // debugging
 
 import java.util.Map;
 import java.util.Vector;
+import java.util.List;
 
 public class PrimaryPanel extends JPanel {
 
@@ -76,29 +77,28 @@ public class PrimaryPanel extends JPanel {
 
     for( FoodItem foodItem : foodItems) {
 
-	Vector<String> row = new Vector<>();
-	
+	List<Object> row = new ArrayList <Object>();
+
+	//	System.out.println(foodItem.getAll());
+		    
 	for ( String element : header ) {
+	    /*
+	    if ( element.equals("Eaten") )
+		 continue;
+	    */
 
-	    String tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
-		
+
+	    Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
+
 	    row.add(tmp);
-	    
-	    //	    System.out.println("iterating through " +
 
+	    //	    System.out.println(row);
 	 }
 
-	model.addRow(row);
+	System.out.println(row);
+	model.addRow(row.toArray());
 
-	/*
-	    if ( foodItem.class.getField(element) ) {
-
-		System.out.println( foodItem.getId() + " has property " + element );
-		
-		}
-	    */
     }
-	//System.out.println(foodItem);
     
     //configure table
     itemTable.setComponentPopupMenu(new FoodContextMenu());
@@ -146,18 +146,14 @@ class FoodTableModel extends DefaultTableModel {
  FoodTableModel(Object[] columnNames) {
      super(columnNames, 0);
      
-     this.addColumn("Eaten");
-
      headerLength = this.getColumnCount();
-
-     System.out.println(headerLength);
 
  }
 
     
  @Override
  public Class getColumnClass(int column) {
-     return column == headerLength-1 ? Boolean.class : String.class;
+     return column == 3 ? Boolean.class : String.class;
  }
 
 }
