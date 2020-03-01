@@ -17,6 +17,16 @@ public class OutDining extends FoodItem {
         this.group = group;
     }
 
+    public OutDining( Map<String,Object> metadata ) {
+	
+        this.id = (String) metadata.get("Id");
+        this.time = (String) metadata.get("Time");
+        this.eaten = (Boolean) metadata.get("Eaten");
+        this.retailer = (String) metadata.get("Retailer");
+        this.meal = (String) metadata.get("Meal");
+        this.group = (String) metadata.get("Group");
+    }
+    
     public void setRetailer(String retailer) {
         this.retailer = retailer;
     }
