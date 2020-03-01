@@ -58,6 +58,13 @@ public class ApplicationController {
         }
     }
 
+    public void setEatenFlagById(String id, Boolean eatenFlag) {
+        for (int i =0; i<items.size(); i++) {
+            if (items.get(i).getId() == id)
+                items.get(i).setEaten(eatenFlag);
+        }
+    }
+
     public void remove(InDining inDiningItem) {
         items.remove(inDiningItem);
         inDiningCount --;
