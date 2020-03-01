@@ -19,7 +19,7 @@ public class DietTypePanel extends JPanel {
    public void actionPerformed(ActionEvent e) {
     JFrame frame = new JFrame("In Dining");
     String[] metadata = new String[]{"Name","Serving","Type"};
-    frame.add(new FoodSpecificationsPanel(metadata));
+    frame.add(new FoodSpecificationsPanel(frame, metadata));
     frame.setVisible(true);
     frame.pack();
     frame.setLocationRelativeTo(null);
@@ -37,7 +37,7 @@ public class DietTypePanel extends JPanel {
    public void actionPerformed(ActionEvent e) {
     JFrame frame = new JFrame("Out Dining");
     String[] metadata = new String[]{"Retailer","Meal","Group"};
-    frame.add(new FoodSpecificationsPanel(metadata));
+    frame.add(new FoodSpecificationsPanel(frame, metadata));
     frame.setVisible(true);
     frame.pack();
     frame.setLocationRelativeTo(null);

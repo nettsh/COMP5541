@@ -18,6 +18,19 @@ public class InDining extends FoodItem {
         this.type = type;
     }
 
+    public InDining( Map<String,Object> metadata ) {
+	
+        this.id = (String) metadata.get("Id");
+	this.time = (String) metadata.get("Time");
+        this.diningType = "Indining";
+	
+        this.eaten = (Boolean) metadata.get("Eaten");
+        this.name = (String) metadata.get("Name");
+        this.serving = (String) metadata.get("Serving");
+        this.type = (String) metadata.get("Type");
+	  
+    }
+    
     public void setName(String name) {
         this.name = name;
     }

@@ -14,7 +14,7 @@ public class FoodContextMenu extends JPopupMenu {
    public void actionPerformed(ActionEvent e) {
     JFrame frame = new JFrame("Item Modification");
     String[] metadata = new String[]{"OutDining","Is","Cool"};
-    frame.add(new FoodSpecificationsPanel(metadata));
+    frame.add(new FoodSpecificationsPanel(frame, metadata));
 
     frame.pack();
     frame.setLocationRelativeTo(null);
