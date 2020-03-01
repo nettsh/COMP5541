@@ -41,15 +41,16 @@ public abstract class FoodItem {
         return eaten;
     }
 
-    public Map<String,String> getAll() {
+    public Map<String,Object> getAll() {
 	
-	Map<String,String> common = new HashMap<>();
+	Map<String,Object> all  = new HashMap<>();
 
-	common.put("Time", time);
-	common.put("Id", id);
-	common.put("DiningType", diningType);
+	all.put("Time", time);
+	all.put("Id", id);
+	all.put("DiningType", diningType);
+	all.put("Eaten", eaten);
 
-	return common;
+	return all;
     }
 
     public abstract String toTxtFile();

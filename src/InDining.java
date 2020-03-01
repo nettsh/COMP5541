@@ -43,9 +43,9 @@ public class InDining extends FoodItem {
     }
 
     @Override
-    public Map<String,String> getAll() {
+    public Map<String,Object> getAll() {
 
-	Map<String, String> all = super.getAll();
+	Map<String, Object> all = super.getAll();
 
 	all.put("Name", this.name);
 	all.put("Serving", this.serving);
