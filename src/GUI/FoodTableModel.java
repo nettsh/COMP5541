@@ -1,6 +1,6 @@
 import javax.swing.table.DefaultTableModel;
 
-pulbic class FoodTableModel extends DefaultTableModel {
+public class FoodTableModel extends DefaultTableModel {
 
     int headerLength ;
 
