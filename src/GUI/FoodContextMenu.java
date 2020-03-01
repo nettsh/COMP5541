@@ -8,13 +8,15 @@ public class FoodContextMenu extends JPopupMenu {
   private FoodTableModel itemTableModel;
   private JMenuItem menuItemModify;
   private JMenuItem menuItemRemove;
+  private JMenuItem menuItemSetEatenFlag;
 
  public FoodContextMenu(FoodTableModel itemTableModel, JTable itemTable, ApplicationController ctl) {
         this.itemTableModel = itemTableModel;
         this.itemTable = itemTable;
 
-        JMenuItem menuItemModify = new JMenuItem("Modify");
+        JMenuItem menuItemModify = new JMenuItem("Modify(Increment2)");
         JMenuItem menuItemRemove = new JMenuItem("Remove");
+        JMenuItem menuItemSetEatenFlag = new JMenuItem("Mark/UnMark Eaten");
 
         menuItemModify.addActionListener(new ActionListener() {
 
@@ -38,13 +40,23 @@ public class FoodContextMenu extends JPopupMenu {
             }
         });
 
-        menuItemModify.addActionListener(new ActionListener(){
+        menuItemSetEatenFlag.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Listener for modify button"+ itemTable.getSelectedRow());
+                String id = String.valueOf(itemTableModel.getValueAt(itemTable.getSelectedRow(), 0));
+                Boolean eatenFlag = true;
+                if ((Boolean)(itemTableModel.getValueAt(itemTable.getSelectedRow(), 3)) == true) {
+                    eatenFlag = false;
+                    itemTableModel.setValueAt(eatenFlag, itemTable.getSelectedRow(), 3);
+                } else {
+                    itemTableModel.setValueAt(eatenFlag, itemTable.getSelectedRow(), 3);
+                }
+                ctl.setEatenFlagById(id, eatenFlag);
+                ctl.saveFoodItems("FoodItemsToRead.txt");
             }
         });
-        add(menuItemModify);
+        add(menuItemSetEatenFlag);
         add(menuItemRemove);
+        add(menuItemModify);
     }
 
 }
