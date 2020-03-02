@@ -4,11 +4,11 @@
 
 to compile, please `cd` to directory `GUI` and run the command `javac -cp ../:. *.java`.
 
-# executing
+## executing
 
 to run the GUI, please `cd` to directory `GUI` and run the command `java -cp ../:. UI.java`.
 
-# left to do
+## left to do
 [x] eaten feature
    - the backend currently does not support eaten tags in the .csv file.
    - the frontend should be able to translate what is read by the back end into boolean displays in the GUI.
