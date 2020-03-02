@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class ApplicationController {
-    int inDiningCount;
-    int outDiningCount;
-    public ArrayList<FoodItem> items;
-    public String[] itemsHeader;
+    static int inDiningCount;
+    static int outDiningCount;
+    static public ArrayList<FoodItem> items;
+    static public String[] itemsHeader;
     
     public ApplicationController() {
         this.inDiningCount = 0;
@@ -15,7 +15,7 @@ public class ApplicationController {
     public ArrayList<FoodItem> retrieveExistingFoodItems(String fileName) {
         items = DataReader.getFoodItemsFromFile(fileName);
     
-    itemsHeader = DataReader.getColumnNames(fileName);
+	itemsHeader = DataReader.getColumnNames(fileName);
     
         for (FoodItem item : items){
             if(item.getDiningType() == "InDining")
@@ -26,7 +26,7 @@ public class ApplicationController {
         return items;
     }
 
-    public Boolean saveFoodItems(String fileName) {
+    static public Boolean saveFoodItems(String fileName) {
         DataWriter.saveFoodItems(fileName, items);
         return true;
     }
@@ -49,6 +49,17 @@ public class ApplicationController {
     public void add(OutDining outDiningItem) {
         items.add(outDiningItem);
         outDiningCount ++;
+    }
+
+    static public void add(FoodItem foodItem) {
+	items.add(foodItem);
+
+	if (foodItem.getDiningType().equals("OutDining"))
+	    outDiningCount ++;
+	else if (foodItem.getDiningType().equals("InDining"))
+	    inDiningCount ++;
+	    
+	
     }
 
     public void removeById(String id) {

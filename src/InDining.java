@@ -11,7 +11,7 @@ public class InDining extends FoodItem {
     public InDining(String id, String time, Boolean eaten, String name, String serving, String type) {
         this.id = id;
         this.time = time;
-        this.diningType = "Indining";
+        this.diningType = "InDining";
         this.eaten = eaten;
         this.name = name;
         this.serving = serving;
@@ -22,9 +22,8 @@ public class InDining extends FoodItem {
 	
         this.id = (String) metadata.get("Id");
 	this.time = (String) metadata.get("Time");
-        this.diningType = "Indining";
-	
-        this.eaten = (Boolean) metadata.get("Eaten");
+        this.diningType = "InDining";
+	this.eaten = (Boolean) metadata.get("Eaten");
         this.name = (String) metadata.get("Name");
         this.serving = (String) metadata.get("Serving");
         this.type = (String) metadata.get("Type");

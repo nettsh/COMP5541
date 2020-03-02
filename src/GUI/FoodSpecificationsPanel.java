@@ -112,43 +112,22 @@ public class FoodSpecificationsPanel extends JPanel {
 
 		    List<Object> row = new ArrayList <Object>();
 				    
-				    
-		    if ( parentFrame.getTitle().equals("Out Dining") ) {
-
-		   	OutDining foodItem = new OutDining ( metadata );
-
-			System.out.println(foodItem.getAll());
-			
-			for ( String element : header ) {
-
-			    Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
-
-			    row.add(tmp);
+		    FoodItem foodItem ;
 		    
-			}
+		    foodItem = parentFrame.getTitle().equals("Out Dining") ? new OutDining ( metadata ) : new InDining ( metadata );
 
-			itemTableModel.addRow(row.toArray());
+		    for ( String element : header ) {
 
+			Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
+
+			row.add(tmp);
 		    
 		    }
-		    else if ( parentFrame.getTitle().equals("In Dining") ) {
-			
-			InDining foodItem = new InDining ( metadata );
 
-			for ( String element : header ) {
+		    itemTableModel.addRow(row.toArray());
 
-			    Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
-
-			    row.add(tmp);
-		    
-			}
-
-			itemTableModel.addRow(row.toArray());
-		    }
-
-		    
-
-
+		    ApplicationController.add(foodItem);
+		    ApplicationController.saveFoodItems("FoodItemsToRead.txt");
 		}
 
 
