@@ -16,6 +16,7 @@ public class UI {
   frame.add(new PrimaryPanel(appController));
   //  frame.add(new PrimaryPanel());
 
+  frame.setPreferredSize(new Dimension(900, 300));
   frame.pack();
   frame.setLocationRelativeTo(null); // *** this will center your app ***
   frame.setVisible(true);

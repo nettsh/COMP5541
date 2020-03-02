@@ -1,5 +1,5 @@
 Id|DiningType|Time|Eaten|Name|Serving|Type|Retailer|Meal|Group
-001|InDining|2020-01-01 1:00AM|false|Cake|Carb|null| | |
+001|InDining|2020-01-01 1:00AM|false|Cake|200g|carb| | |
 002|OutDining|2020-02-01 2:00PM|true| | | |A&W|Frites|Main Dish
 003|InDining|2020-01-02 1:00AM|true|Rice|1kg|Carb| | |
 004|OutDining|2020-02-02 2:00PM|false| | | |Second Cup|Cookies|Main Dish
