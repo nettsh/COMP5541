@@ -29,7 +29,7 @@ public class FoodSpecificationsPanel extends JPanel {
 
 	// time selector
 	JSpinner timeSpinner = new JSpinner(new SpinnerDateModel());
-	JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "HH:mm:ss");
+	JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "yyyy-MM-dd HH:mm:ss");
 	timeSpinner.setEditor(timeEditor);
 	timeSpinner.setValue(new Date()); // will only show the current time
 
@@ -104,7 +104,7 @@ public class FoodSpecificationsPanel extends JPanel {
 
 		    // Date
 		    
-		    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+		    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					    
 		    metadata.put("Time", format.format(timeSpinner.getValue()) ) ;
 

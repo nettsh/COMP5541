@@ -52,7 +52,7 @@ public class DataReader {
                         item.setEaten(Boolean.valueOf(vals[3]));
                         item.setName(vals[4]);
                         item.setServing(vals[5]);
-                        item.setServing(vals[6]);
+                        item.setType(vals[6]);
                         items.add(item);
                     } else {
                         OutDining item = new OutDining();

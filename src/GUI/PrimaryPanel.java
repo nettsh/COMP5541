@@ -23,16 +23,13 @@ public class PrimaryPanel extends JPanel {
 	
     JTable itemTable = new JTable(itemTableModel);
 
-    for( FoodItem foodItem : foodItems) {
+    System.out.println(Arrays.toString(header));
+    
+    for ( FoodItem foodItem : foodItems) {
 
 	List<Object> row = new ArrayList <Object>();
 
 	for ( String element : header ) {
-	    /*
-	    if ( element.equals("Eaten") )
-		 continue;
-	    */
-
 
 	    Object tmp = foodItem.getAll().containsKey(element) ? foodItem.getAll().get(element) : "" ;
 
@@ -42,6 +39,8 @@ public class PrimaryPanel extends JPanel {
 
 	itemTableModel.addRow(row.toArray());
 
+	System.out.println(row);
+	
     }
   
     //configure table
