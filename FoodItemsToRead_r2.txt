@@ -1,0 +1,3 @@
+Id|DiningType|Time|Eaten|Name|Serving|Type|Nutrition Facts|Retailer|Meal|Group
+b40ebc70-3b04-4272-bae8-e9a0eef1bc7e|InDining|Mon,2020-03-01,19:39:57|true|Apple|10|Fruits|200,1,2,3,4,5| | |
+f4cfa519-8929-40ed-85f3-4e768602cf6d|OutDining|Tue,2020-03-01,19:40:25|true| | | | |McDonalds|Big Mac|Junk Food

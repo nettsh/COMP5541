@@ -5,14 +5,15 @@ public class DietApp {
     public static void main(String[] args) {
         ApplicationController appController = new ApplicationController();
         //demo read existing items from file and add one indining and one outdining
-        appController.retrieveExistingFoodItems("FoodItemsToRead.txt");
-        InDining inDiningItem = new InDining("003", "2020-01-02 1:00AM", true, "Rice", "200g","Carb");
-        OutDining outDiningItem = new OutDining("004","2020-02-02 2:00PM", false, "Second Cup","Cookies", "Main Dish");
+        appController.retrieveExistingFoodItems("FoodItemsToRead_r2.txt");
+        
+        //Demo add Indining and OutDining
+        Time time = new Time("Wed", "2020-01-02", "1:00AM");
+        NutritionFacts nutFacts = new NutritionFacts(400,2,4,6,8,10);
+        InDining inDiningItem = new InDining("11111111", time, true, "Rice", "200g","Carb",nutFacts);
+        OutDining outDiningItem = new OutDining("22222222",time, false, "Second Cup","Cookies", "Main Dish");
         appController.add(inDiningItem);
         appController.add(outDiningItem);
-        //Modify uses Id to match
-        inDiningItem.setServing("1kg");
-        appController.modify(inDiningItem);
-        appController.saveFoodItems("FoodItemsSaved.txt");
+        appController.saveFoodItems("FoodItemsSaved_r2.txt");
     }
 }

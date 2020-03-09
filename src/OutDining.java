@@ -8,10 +8,10 @@ public class OutDining extends FoodItem {
 
     public OutDining(){}
 
-    public OutDining(String id, String time, Boolean eaten, String retailer, String meal, String group) {
+    public OutDining(String id, Time time, Boolean eaten, String retailer, String meal, String group) {
         this.id = id;
         this.time = time;
-	this.diningType = "OutDining";
+	    this.diningType = "OutDining";
         this.eaten = eaten;
         this.retailer = retailer;
         this.meal = meal;
@@ -21,8 +21,8 @@ public class OutDining extends FoodItem {
     public OutDining( Map<String,Object> metadata ) {
 	
         this.id = (String) metadata.get("Id");
-        this.time = (String) metadata.get("Time");
-	this.diningType = "OutDining";
+        this.time = (Time) metadata.get("Time");
+	    this.diningType = "OutDining";
         this.eaten = (Boolean) metadata.get("Eaten");
         this.retailer = (String) metadata.get("Retailer");
         this.meal = (String) metadata.get("Meal");
@@ -80,6 +80,6 @@ public class OutDining extends FoodItem {
     @Override
     public String toTxtFile() {
         //2|OutDining|JAN 31| | | |AW|Frites|Fat
-        return id + "|" + "OutDining" + "|" + time + "|" + eaten + "| | | |" + retailer + "|" + meal + "|" + group;
+        return id + "|" + "OutDining" + "|" + time.toTxt() + "|" + eaten + "| | | | |" + retailer + "|" + meal + "|" + group;
     }
 }

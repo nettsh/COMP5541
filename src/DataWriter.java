@@ -7,7 +7,7 @@ public class DataWriter {
     public static void saveFoodItems(String fileName, ArrayList<FoodItem> items) {
         try {
             PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-            writer.println("Id|DiningType|Time|Eaten|Name|Serving|Type|Retailer|Meal|Group");
+            writer.println("Id|DiningType|Time|Eaten|Name|Serving|Type|Nutrition Facts|Retailer|Meal|Group");
             for(FoodItem item : items) {
                 writer.println(item.toTxtFile());
             }

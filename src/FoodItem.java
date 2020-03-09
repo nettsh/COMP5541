@@ -2,18 +2,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class FoodItem {
-    String time;
+    Time time;
     String id;
     String diningType;
     Boolean eaten;
     
     String[] all;
     
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 

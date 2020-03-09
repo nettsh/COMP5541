@@ -5,10 +5,12 @@ public class InDining extends FoodItem {
     String name;
     String serving;
     String type;
+    NutritionFacts nutritionFacts;
 
     public InDining(){}
 
-    public InDining(String id, String time, Boolean eaten, String name, String serving, String type) {
+    public InDining(String id, Time time, Boolean eaten, String name, String serving, String type,
+                    NutritionFacts nutritionFacts) {
         this.id = id;
         this.time = time;
         this.diningType = "InDining";
@@ -16,14 +18,15 @@ public class InDining extends FoodItem {
         this.name = name;
         this.serving = serving;
         this.type = type;
+        this.nutritionFacts = nutritionFacts;
     }
 
     public InDining( Map<String,Object> metadata ) {
 	
         this.id = (String) metadata.get("Id");
-	this.time = (String) metadata.get("Time");
+	    this.time = (Time) metadata.get("Time");
         this.diningType = "InDining";
-	this.eaten = (Boolean) metadata.get("Eaten");
+	    this.eaten = (Boolean) metadata.get("Eaten");
         this.name = (String) metadata.get("Name");
         this.serving = (String) metadata.get("Serving");
         this.type = (String) metadata.get("Type");
@@ -54,6 +57,18 @@ public class InDining extends FoodItem {
         return type;
     }
 
+    public NutritionFacts getNutritionFacts() {
+        return nutritionFacts;
+    }
+
+    public void setNutritionFacts(NutritionFacts nutritionFacts) {
+        this.nutritionFacts = nutritionFacts;
+    }
+
+    public void setNutritionFacts(String nutString) {
+        this.nutritionFacts =  new NutritionFacts(nutString);
+    }
+
     @Override
     public Map<String,Object> getAll() {
 
@@ -80,6 +95,7 @@ public class InDining extends FoodItem {
 
     @Override
     public String toTxtFile() {
-        return id + "|" + "InDining" + "|" + time + "|" + eaten + "|" + name + "|" + serving + "|" + type + "| | | ";
+        return id + "|" + "InDining" + "|" + time.toTxt() + "|" + eaten + "|" + name + "|" + serving + "|" + type
+                + "|" + nutritionFacts.toTxt() + "| | | |";
     }
 }

@@ -48,17 +48,18 @@ public class DataReader {
                         InDining item = new InDining();
                         item.setId(vals[0]);
                         item.setDiningType(vals[1]);
-                        item.setTime(vals[2]);
+                        item.setTime(new Time(vals[2]));
                         item.setEaten(Boolean.valueOf(vals[3]));
                         item.setName(vals[4]);
                         item.setServing(vals[5]);
                         item.setType(vals[6]);
+                        item.setNutritionFacts(new NutritionFacts(vals[7]));
                         items.add(item);
                     } else {
                         OutDining item = new OutDining();
                         item.setId(vals[0]);
                         item.setDiningType(vals[1]);
-                        item.setTime(vals[2]);
+                        item.setTime(new Time(vals[2]));
                         item.setEaten(Boolean.valueOf(vals[3]));
                         item.setRetailer(vals[7]);
                         item.setMeal(vals[8]);
